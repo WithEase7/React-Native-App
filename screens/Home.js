@@ -1,16 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { globalStyle } from "../Global";
 import { View, Text, StyleSheet, Modal } from "react-native";
 import CustomButton from "./shared/CustomButton";
 
 function Home() {
+  const [modal_l, setModal_l] = useState(false);
+  const [modal_r, setModal_r] = useState(false);
 
-    const [modal_l, setModal_l] = useState(false)
-    const [modal_r, setModal_r] = useState(false)
-
-    const loginHandler = ()=> {
-        setModal_l(true)
-    }
+  const loginHandler = () => {
+    setModal_l(true);
+  };
+  const registerHandler = () => {
+    setModal_r(true);
+  };
 
   return (
     <View style={globalStyle.container}>
@@ -19,10 +21,17 @@ function Home() {
       </View>
       <View style={styles.tagBox}>
         <Text style={styles.tagLine}>Lets you eat food better</Text>
-        <Modal visible={modal_l}>
-            <Text>Hello Modal</Text>
+        <Modal visible={modal_l} animationType="slide">
+          <Text>Login Modal</Text>
         </Modal>
-        <CustomButton text={'Login'} onPress={loginHandler}/>
+        <Modal visible={modal_r} animationType="slide">
+          <Text>Register Modal</Text>
+        </Modal>
+        <View>
+          <CustomButton text={"Login"} onPress={loginHandler} />
+          
+        </View>
+        <View><CustomButton text={"Register"} onPress={registerHandler} /></View>
       </View>
     </View>
   );
@@ -42,7 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     // backgroundColor: "#717",
-paddingVertical: 330,
+    paddingVertical: 330,
     // borderWidth: 5,
   },
   tagLine: {
@@ -57,6 +66,6 @@ paddingVertical: 330,
   header: {
     height: 90,
     // backgroundColor: "#333",
-},
+  },
 });
 export default Home;
