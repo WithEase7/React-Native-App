@@ -5,6 +5,8 @@ export const globalStyle = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical:30,
+    backgroundColor: "#1a1818"
+
   },
   titleText: {
     // fontFamily:"serif",
