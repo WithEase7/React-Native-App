@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { globalStyle } from "../Global";
 import { View, Text, StyleSheet, Modal } from "react-native";
 import CustomButton from "./shared/CustomButton";
+import CustomHeader from "./shared/CustomHeader";
 
 function Home() {
   const [modal_l, setModal_l] = useState(false);
@@ -16,10 +17,8 @@ function Home() {
 
   return (
     <View style={globalStyle.container}>
-      <View style={styles.header}>
-        <Text style={styles.titleText}>PUREFOUND</Text>
-      </View>
-      <View style={styles.tagBox}>
+      <View>
+        <CustomHeader title={"PUREFOUND"}/>
         <Text style={styles.tagLine}>Lets you eat food better</Text>
         <Modal visible={modal_l} animationType="slide">
           <Text>Login Modal</Text>
@@ -27,45 +26,25 @@ function Home() {
         <Modal visible={modal_r} animationType="slide">
           <Text>Register Modal</Text>
         </Modal>
-        <View>
+        <View style={styles.userInfo}>
           <CustomButton text={"Login"} onPress={loginHandler} />
-          
+          <CustomButton text={"Register"} onPress={registerHandler} />     
         </View>
-        <View><CustomButton text={"Register"} onPress={registerHandler} /></View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleText: {
-    fontSize: 30,
-    color: "red",
-    fontWeight: "bold",
-    marginTop: 28,
-    textAlign: "center",
-    letterSpacing: 1,
-  },
-  tagBox: {
-    // marginVertical: 60,
-    flex: 1,
-    alignItems: "center",
-    // backgroundColor: "#717",
-    paddingVertical: 330,
-    // borderWidth: 5,
-  },
-  tagLine: {
+  tagLine:{
     fontSize: 40,
     fontWeight: "bold",
-    // backgroundColor: "red",
     textAlign: "center",
     color: "white",
-    position: "absolute",
-    top: 100,
+    marginTop: 120,
   },
-  header: {
-    height: 90,
-    // backgroundColor: "#333",
-  },
+  userInfo: {
+    marginTop: 200,
+  }
 });
 export default Home;
