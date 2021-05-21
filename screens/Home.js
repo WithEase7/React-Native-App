@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { globalStyle } from "../Global";
 import { View, Text, StyleSheet, Modal } from "react-native";
-import CustomButton from "./shared/CustomButton";
-import CustomHeader from "./shared/CustomHeader";
+import CustomButton from "../shared/CustomButton";
+import CustomHeader from "../shared/CustomHeader";
 import { MaterialIcons } from "@expo/vector-icons";
 import Login from "./Login";
 import Register from "./Register";
 
-function Home() {
+function Home({navigation}) {
   const [modal_l, setModal_l] = useState(false);
   const [modal_r, setModal_r] = useState(false);
 
@@ -25,7 +25,7 @@ function Home() {
   return (
     <View style={globalStyle.container}>
       <View>
-        <CustomHeader title={"PUREFOUND"} />
+        <CustomHeader title={"PUREFOUND"} navigation={navigation} />
         <Text style={styles.tagLine}>Lets you eat food better</Text>
         <Modal visible={modal_l} animationType="slide">
           <Login onPress={goBack} />

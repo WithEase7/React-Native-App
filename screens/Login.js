@@ -1,8 +1,9 @@
 import { Formik } from "formik";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { globalStyle } from "../Global";
 import { AntDesign } from "@expo/vector-icons";
+import CustomButton from "../shared/CustomButton";
 
 function Login({ onPress }) {
   return (
@@ -15,23 +16,31 @@ function Login({ onPress }) {
       />
       <Formik
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => {}}
+        onSubmit={(values, actions) => {
+          actions.resetForm();
+          // onPress();
+        }}
       >
         {(props) => (
-          <View style={styles.form}>
-            <TextInput
-              style={{ ...globalStyle.input, ...styles.input }}
-              placeholder="Email Address"
-              onChange={props.handleChange("email")}
-              value={props.values.email}
-            />
-            <TextInput
-              style={{ ...globalStyle.input, ...styles.input }}
-              placeholder="Password"
-              onChange={props.handleChange("password")}
-              value={props.values.password}
-            />
-          </View>
+          <ScrollView>
+            <View style={styles.form}>
+              <TextInput
+                style={{ ...globalStyle.input, ...styles.input }}
+                placeholder="Enter your email"
+                autoCapitalize="none"
+                keyboardType="email-address"
+                onChange={props.handleChange("email")}
+                value={props.values.email}
+              />
+              <TextInput
+                style={{ ...globalStyle.input, ...styles.input }}
+                placeholder="Password"
+                onChange={props.handleChange("password")}
+                value={props.values.password}
+              />
+            </View>
+            <CustomButton text={"Login"} onPress={props.handleSubmit} />
+          </ScrollView>
         )}
       </Formik>
     </View>
@@ -51,12 +60,13 @@ const styles = StyleSheet.create({
   },
   form: {
     marginHorizontal: 40,
+
     paddingVertical: 80,
   },
   input: {
-      marginBottom: 50,
-      backgroundColor: "white"
-  }
+    marginBottom: 30,
+    backgroundColor: "white",
+  },
 });
 
 export default Login;
