@@ -27,9 +27,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "red",
     fontWeight: "bold",
-    // marginTop: 28,
-    // marginHorizontal: 65,
-    // textAlign: "center",
     alignSelf: "center",
     letterSpacing: 1,
   },
@@ -40,8 +37,6 @@ const styles = StyleSheet.create({
   },
   menu: {
     color: "white",
-    // marginTop: 32,
-    // marginLeft: 10,
     alignSelf: "center",
     position: "absolute",
     left: 20,

@@ -3,7 +3,6 @@ import { globalStyle } from "../Global";
 import { View, Text, StyleSheet, Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import CustomButton from "../shared/CustomButton";
 import CustomHeader from "../shared/CustomHeader";
-import { MaterialIcons } from "@expo/vector-icons";
 import Login from "./Login";
 import Register from "./Register";
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
 import { globalStyle } from "../Global";
-// import globalStyle from '../Global'
 import CustomHeader from "../shared/CustomHeader";
 
 function AnimalProducts({ navigation }) {

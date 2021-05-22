@@ -9,7 +9,6 @@ export const globalStyle = StyleSheet.create({
 
   },
   titleText: {
-    // fontFamily:"serif",
     fontSize: 18,
     color: "#333",
   },
