@@ -6,12 +6,12 @@ import { AntDesign } from "@expo/vector-icons";
 import CustomButton from "../shared/CustomButton";
 import * as yup from "yup";
 
-const LoginSchema = yup.object({
-  fullname: yup.string(),
-  email: yup.string(),
-  phone: yup.string().min(10).max(10),
-  password: yup.string(),
-  confirm_password: yup.string(),
+const RegisterSchema = yup.object({
+  fullname: yup.string().required('Required'),
+  email: yup.string().email('Invalid Email').required('Required'),
+  phone: yup.string().required('Required'),
+  password: yup.string().required('Required'),
+  confirm_password: yup.string().required('Required'),
 });
 
 function Register({ onPress }) {
@@ -35,7 +35,7 @@ function Register({ onPress }) {
           actions.resetForm();
           // onPress();
         }}
-        validationSchema={LoginSchema}
+        validationSchema={RegisterSchema}
       >
         {(props) => (
           <ScrollView>

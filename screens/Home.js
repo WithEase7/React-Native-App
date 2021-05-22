@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { globalStyle } from "../Global";
-import { View, Text, StyleSheet, Modal } from "react-native";
+import { View, Text, StyleSheet, Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import CustomButton from "../shared/CustomButton";
 import CustomHeader from "../shared/CustomHeader";
 import { MaterialIcons } from "@expo/vector-icons";
 import Login from "./Login";
 import Register from "./Register";
+
 
 function Home({navigation}) {
   const [modal_l, setModal_l] = useState(false);
@@ -24,6 +25,7 @@ function Home({navigation}) {
 
   return (
     <View style={globalStyle.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View>
         <CustomHeader title={"PUREFOUND"} navigation={navigation} />
         <Text style={styles.tagLine}>Lets you eat food better</Text>
@@ -38,6 +40,7 @@ function Home({navigation}) {
           <CustomButton text={"Register"} onPress={registerHandler} />
         </View>
       </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 }

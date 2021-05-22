@@ -64,9 +64,9 @@ function AnimalProducts({ navigation }) {
 
 const styles = StyleSheet.create({
   img: {
-    width: 100,
+    width: 140,
     height: 100,
-    marginHorizontal: 50,
+    marginHorizontal: 28,
     backgroundColor: "white",
   },
 

@@ -1,9 +1,15 @@
 import { Formik } from "formik";
 import React from "react";
-import { ScrollView, StyleSheet, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, TextInput, View, Text } from "react-native";
 import { globalStyle } from "../Global";
 import { AntDesign } from "@expo/vector-icons";
 import CustomButton from "../shared/CustomButton";
+import * as yup from "yup";
+
+const LoginSchema = yup.object({
+  email: yup.string().required("Required").email("Enter valid email"),
+  password: yup.string().required("Required"),
+});
 
 function Login({ onPress }) {
   return (
@@ -20,6 +26,7 @@ function Login({ onPress }) {
           actions.resetForm();
           // onPress();
         }}
+        validationSchema={LoginSchema}
       >
         {(props) => (
           <ScrollView>
@@ -32,12 +39,15 @@ function Login({ onPress }) {
                 onChange={props.handleChange("email")}
                 value={props.values.email}
               />
+              <Text style={styles.errorText}>{props.touched.email && props.errors.email}</Text>
               <TextInput
                 style={{ ...globalStyle.input, ...styles.input }}
                 placeholder="Password"
                 onChange={props.handleChange("password")}
                 value={props.values.password}
               />
+              <Text style={styles.errorText}>{props.touched.password && props.errors.email}</Text>
+
             </View>
             <CustomButton text={"Login"} onPress={props.handleSubmit} />
           </ScrollView>
@@ -64,9 +74,15 @@ const styles = StyleSheet.create({
     paddingVertical: 80,
   },
   input: {
-    marginBottom: 30,
+    marginBottom: 10,
     backgroundColor: "white",
   },
+  errorText: {
+    color: "crimson",
+    fontWeight: "bold",
+    marginBottom: 30,
+    textAlign:"center",
+  }
 });
 
 export default Login;
